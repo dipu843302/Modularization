@@ -1,5 +1,5 @@
 package com.example.data
 
 interface Model {
-    fun passData(name:String)
+    fun passData(list:ArrayList<String>)
 }

@@ -3,26 +3,42 @@ package com.example.data
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main2.*
 
-class MainActivity2(var model: Model) : AppCompatActivity() {
+class MainActivity2 : AppCompatActivity() {
+
+    lateinit var dataAdapter: ModuleDataAdapter
+    var arrayList = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
         val intent = intent
-        tvDataModule.text = intent.getStringExtra("name")
+        val name = intent.getBundleExtra("bundle")
+        if (name != null) {
+            arrayList.addAll(name.getStringArrayList("name")!!)
+        }
+        setRecyclerView()
 
         buttonModule.setOnClickListener {
-            val address = etTextModule.text.toString()
-            model.passData(address)
-            finish()
+            val data=etTextModule.text.toString()
+            sendData(data)
         }
     }
 
-    fun getModelInstance(model: Model) {
-
+    fun sendData(address:String){
+        val intent=Intent()
+        intent.putExtra("address",address)
+        setResult(0, intent)
+        finish()
     }
 
+    fun setRecyclerView() {
+        dataAdapter = ModuleDataAdapter(arrayList)
+        dataAdapter.setName2(arrayList)
+        recyclerView.adapter = dataAdapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
+    }
 }

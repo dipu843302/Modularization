@@ -20,12 +20,17 @@
         android:layout_height="wrap_content"
         android:id="@+id/button"
         android:text="Send"/>
-    <TextView
-        android:layout_width="wrap_content"
+    <Button
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Received the data from Module"
-        android:id="@+id/tvData"
-        android:layout_marginTop="28dp"
-        android:textSize="20dp"/>
+        android:id="@+id/launchActivity"
+        android:text="Next Activity"
+        />
+
+   <androidx.recyclerview.widget.RecyclerView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:id="@+id/recyclerView"
+       />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

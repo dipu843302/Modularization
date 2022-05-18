@@ -19,12 +19,9 @@
         android:id="@+id/buttonModule"
         android:background="@color/cardview_dark_background"
         android:text="Send"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Received the data from activity"
-        android:id="@+id/tvDataModule"
-        android:layout_marginTop="28dp"
-        android:textSize="20dp"/>
+  <androidx.recyclerview.widget.RecyclerView
+      android:layout_width="match_parent"
+      android:id="@+id/recyclerView"
+      android:layout_height="match_parent"/>
 
 </LinearLayout>
