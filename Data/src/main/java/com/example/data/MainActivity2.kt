@@ -5,20 +5,24 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main2.*
 
-class MainActivity2 : AppCompatActivity() {
+class MainActivity2(var model: Model) : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
         val intent = intent
-        tvDataModule.setText(intent.getStringExtra("name"))
+        tvDataModule.text = intent.getStringExtra("name")
 
-        buttonModule.setOnClickListener{
-            val intent2=Intent()
-            var address=etTextModule.text.toString()
-            intent2.putExtra("address",address)
-            setResult(RESULT_OK,intent2)
+        buttonModule.setOnClickListener {
+            val address = etTextModule.text.toString()
+            model.passData(address)
             finish()
         }
     }
+
+    fun getModelInstance(model: Model) {
+
+    }
+
 }
