@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_main2.*
 class MainActivity2 : AppCompatActivity() {
 
     lateinit var dataAdapter: ModuleDataAdapter
-    var arrayList = ArrayList<String>()
+    private var arrayList = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,15 +28,15 @@ class MainActivity2 : AppCompatActivity() {
         }
     }
 
-    fun sendData(address:String){
+    private fun sendData(address:String){
         val intent=Intent()
         intent.putExtra("address",address)
         setResult(0, intent)
         finish()
     }
 
-    fun setRecyclerView() {
-        dataAdapter = ModuleDataAdapter(arrayList)
+   private fun setRecyclerView() {
+        dataAdapter = ModuleDataAdapter()
         dataAdapter.setName2(arrayList)
         recyclerView.adapter = dataAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)

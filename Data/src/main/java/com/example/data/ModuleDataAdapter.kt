@@ -7,9 +7,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_layout.view.*
 
-class ModuleDataAdapter(var arrayList: ArrayList<String>) :
-    RecyclerView.Adapter<ModuleDataAdapter.ModuleDataViewHolder>() {
-
+class ModuleDataAdapter : RecyclerView.Adapter<ModuleDataAdapter.ModuleDataViewHolder>() {
+    private var arrayList = ArrayList<String>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ModuleDataViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_layout, parent, false)
         return ModuleDataViewHolder(view)
@@ -23,12 +22,14 @@ class ModuleDataAdapter(var arrayList: ArrayList<String>) :
     override fun getItemCount(): Int {
         return arrayList.size
     }
-    fun setName2(newNameList:ArrayList<String>){
-        val diffUtil=ModuleDiffUtilCallBack(arrayList,newNameList)
-        val diffResult= DiffUtil.calculateDiff(diffUtil)
-        arrayList=newNameList
+
+    fun setName2(newNameList: ArrayList<String>) {
+        val diffUtil = ModuleDiffUtilCallBack(arrayList, newNameList)
+        val diffResult = DiffUtil.calculateDiff(diffUtil)
+        arrayList = newNameList
         diffResult.dispatchUpdatesTo(this)
     }
+
     class ModuleDataViewHolder(var item: View) : RecyclerView.ViewHolder(item) {
         fun setData(data: String) {
             item.apply {
