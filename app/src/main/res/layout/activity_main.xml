@@ -20,7 +20,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/button"
         android:text="Send"/>
-
+<Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Launch Next Activity"
+    android:id="@+id/nextActivity"/>
    <androidx.recyclerview.widget.RecyclerView
        android:layout_width="match_parent"
        android:layout_height="match_parent"
